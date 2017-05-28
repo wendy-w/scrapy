@@ -95,7 +95,7 @@ In [1]: view(respone)
 + 设置`user_agent`：
 打开jobspider目录下的settings.py文件，使用查找找到`USER_AGENT`，去掉这项注释，并把后面的内容改成我们这前浏览器打开网页的USER_AGENT。（使用谷歌浏览器，按F12打开开发者工具，在network中找到这个网页的Request header信息，然后复制USER_AGENT信息）,接着把ROBOTSTXT_OBEY后面的true改成False。
 结果如下：
-![3.png](5.png)
+![3.png](images/5.png)
 回到scrapy shell控制台，`ctrl+d`先退出，然后重复以上：
 ```
 > scrapy shell "http://search.51job.com/list/080200,000000,0000,00,9,99,python,2,1.html?lang=c&stype=&postchannel=0000&workyear=99&cotype=99&degreefrom=99&jobterm=99&companysize=99&providesalary=99&lonlat=0%2C0&radius=-1&ord_field=0&confirmdate=9&fromType=&dibiaoid=0&address=&line=&specialarea=00&from=&welfare="
@@ -108,20 +108,20 @@ bingo！！！和我们之前看到的一样。
 下面开始解析网页内容。
 这里使用css选择器，熟悉xpath的同学更推荐使用xpath。
 打开chrome+F12，使用`Ctrl+shift+c`选择要提取的内容，可以看到他们所在位置
-![3.png](6.png)
+![3.png](images/6.png)
 ## 改写items.py
 添加所要爬取的5个内容，分别是标题，公司名称，位置，薪水，发布时间。
-![3.png](7.png)
+![3.png](images/7.png)
 改写parse函数：
-![3.png](8.png)
+![3.png](images/8.png)
 然后在命令行输入:
 ```
 > scrapy crawl jobspider1 -o joblist.json
 ```
 命令行会出现爬取的过程，看着很爽有木有！
-![3.png](9.png)
+![3.png](images/9.png)
 结果将以json格式输出保存在jobspider根目录下。
-![3.png](10.png)
+![3.png](images/10.png)
 将40页的内容全部爬下了。
 bingo！
 
