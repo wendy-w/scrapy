@@ -57,7 +57,7 @@ scrapy parse #使用一个callback函数去解析所给的url
 步骤：
 
 打开[51job](http://www.51job.com/)，输入搜索词Python，复制得到的新网页的链接：http://search.51job.com/list/080200,000000,0000,00,9,99,Python,2,1.html?lang=c&stype=&postchannel=0000&workyear=99&cotype=99&degreefrom=99&jobterm=99&companysize=99&providesalary=99&lonlat=0%2C0&radius=-1&ord_field=0&confirmdate=9&fromType=&dibiaoid=0&address=&line=&specialarea=00&from=&welfare=。
-![2.png](2.png)
+![2.png](images/2.png)
 + 到指定目录下打开命令行输入：
 ```
 scrapy startproject jobspider 
@@ -74,19 +74,19 @@ Created spider 'jobspider1' using template 'basic' in module:
   jobspider.spiders.jobspider1
 ```
 然后打开：工程目录\spiders\下的jobspider1.py，使用任意文本编辑器即可，推荐sublime。
-![1.png](1.png)
+![1.png](https://github.com/wendy-w/scrapy/raw/master/images/1.png)
 
 ## 编写爬虫
 接下来处理`jobspider1.py`文件：
 首先可以注释掉allowed_domains这一行，然后将start_urls中的http去重。
-![3.png](3.png)
+![3.png](images/3.png)
 重头戏来了，开始编写parse函数，可以使用`scrapy shell`帮助我们：
 首先打开cmd命令行,输入：
 ```
 > scrapy shell "http://search.51job.com/list/080200,000000,0000,00,9,99,python,2,1.html?lang=c&stype=&postchannel=0000&workyear=99&cotype=99&degreefrom=99&jobterm=99&companysize=99&providesalary=99&lonlat=0%2C0&radius=-1&ord_field=0&confirmdate=9&fromType=&dibiaoid=0&address=&line=&specialarea=00&from=&welfare="
 ```
 看到一长串命令不知道是什么的东东后得到如下结果（以后会知道这些是爬虫的日志文件）：
-![3.png](4.png)
+![3.png](images/4.png)
 然后可以看到Available scrapy objects有很多，我们先使用
 ```
 In [1]: view(respone)
